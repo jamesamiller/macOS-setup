@@ -21,6 +21,7 @@ These instructions are for configuring a new install of macOS, based on my resea
     - Finder preferences and layout
     - Firewall
     - Hostname
+    - In Spotlight, deselect "Spotlight Suggestions" and "Allow Spotlight Suggestions in Lookup"
 3. [Restart in recovery mode](https://support.apple.com/en-us/HT201314) and [set firmware password](https://support.apple.com/en-us/HT204455).
 4. Sign in to iCloud and sync (including Photos).
 
