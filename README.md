@@ -4,7 +4,7 @@ These instructions are for configuring a new install of macOS, based on my resea
 
 ### References and Additional Resources
 
-- [Terminal commands](https://github.com/herrbischoff/awesome-macos-command-line)
+- [Collection of Terminal commands](https://github.com/herrbischoff/awesome-macos-command-line)
 - [Another macOS setup](https://gist.github.com/kevinelliott/7152e00d6567e223902a4775b5a0a0be)
 - [Mathias Bynens' dotfiles](https://github.com/mathiasbynens/dotfiles)
 
@@ -13,8 +13,8 @@ These instructions are for configuring a new install of macOS, based on my resea
 1. Have available
     - iCloud username and password
     - App Store username and password (if different)
-1. See if there is a macOS update
-2. Through the System Preferences panel, set 
+2. See if there is a macOS update
+3. Through the System Preferences panel, set 
     - Mouse behavior (e.g., tracking speed, scrolling)
     - Screen and Energy Saver options
     - Dock size
@@ -22,8 +22,8 @@ These instructions are for configuring a new install of macOS, based on my resea
     - Firewall
     - Hostname
     - In Spotlight, deselect "Spotlight Suggestions" and "Allow Spotlight Suggestions in Lookup"
-3. [Restart in recovery mode](https://support.apple.com/en-us/HT201314) and [set firmware password](https://support.apple.com/en-us/HT204455).
-4. Sign in to iCloud and sync (including Photos).
+4. [Restart in recovery mode](https://support.apple.com/en-us/HT201314) and [set firmware password](https://support.apple.com/en-us/HT204455).
+5. Sign in to iCloud and sync (including Photos).
 
 # Software Installation
 
@@ -48,6 +48,36 @@ and run it
 
 At this point, it should ask for an App Store signin. If not, sign in manually through the App. 
 
+## Bash and GNU Utilities
+
+Install modern Bash and many GNU command line tools. 
+
+Retrieve the Bash script 
+
+`curl -o gnu.sh https://raw.githubusercontent.com/jamesamiller/macOS-setup/master/gnu.sh`
+
+and edit it for any last-minute changes. Now make it executable 
+
+`chmod u+x gnu.sh`
+
+and run it
+
+`./gnu.sh`
+
+We want to use the GNU `coreutils` and `findutils` with their usual names (and not with the "g" prefix). The Homebrew coreutils install creates a directory `$(brew --prefix coreutils)/libexec/gnubin` that contains the usual names sym linked to the GNU "g"-prefixed ones in `$(brew --prefix coreutils)/bin`.
+
+We thus need to be sure that `$(brew --prefix coreutils)/libexec/gnubin` is in PATH before the directories that contains the default BSD macOS versions (such as `/bin` and `/usr/bin`). The same argument goes for `findutils`.
+
+This is accomplished with the following lines in my `.path` file, which in turn is called by my `.bash_profile`. Make sure it is there.
+
+```bash
+# Reference GNU utilities without the 'g' prefix
+export PATH="$(brew --prefix findutils)/libexec/gnubin:$PATH"
+export MANPATH="$(brew --prefix findutils)/libexec/gnuman:$MANPATH"
+export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+export MANPATH="$(brew --prefix coreutils)/libexec/gnuman:$MANPATH"
+```
+
 ## Applications via Homebrew
 
 Retrieve the script `apps.sh`
@@ -59,21 +89,13 @@ and edit for any additions or deletions. Make the script executable as above and
 ### Sign-ins and Cloud Storage
 
 Sign into
--1Password
--Chrome, Firefox
--Dropbox (and sync)
--Evernote (and sync)
--Google Drive Filestream (and sync)
--Adobe Creative Cloud
--Zoom
-
-### Alfred Sync
-
-Set up syncing to `~/Dropbox/Alfred\ Sync` and supply the license for Powerpack.
-
-### iTerm2 Sync
-
-Set up preference syncing in iTerm2 to the directory `~/Dropbox/iTerm2`.
+- 1Password
+- Chrome, Firefox
+- Dropbox (and sync)
+- Evernote (and sync)
+- Google Drive Filestream (and sync)
+- Adobe Creative Cloud
+- Zoom
 
 ## Mac App Store (XXX working...)
 
@@ -100,6 +122,14 @@ and as before review it and make any last-minute changes. Change permissions to 
 - Epson Tools
 
 # More Configuration
+
+## Alfred Sync
+
+Set up syncing to `~/Dropbox/Alfred\ Sync` and supply the license for Powerpack.
+
+## iTerm2 Sync
+
+Set up preference syncing in iTerm2 to the directory `~/Dropbox/iTerm2`.
 
 ## Dotfiles
 
@@ -141,7 +171,7 @@ After the MacTeX install, we need to install extra fonts and set up access to my
 
 ### Fonts
 
-**Note:** Logout of the bash shell and start a new one, or TeXLive will not be in the path and the following install will hang.
+**Note:** Must update
 
 I need to add the [MathTime Professional 2 fonts](http://www.pctex.com/mtpro2.html). General instructions can be found [here](http://cims.nyu.edu/~fennell/mtpro2/). For my set up, the fonts are installed as follows.
 
@@ -187,16 +217,6 @@ ln -s ~/Dropbox/Sublime/User
 ```
 
 Now any package additions or changes will be synced across all my machines. 
-
-### Markdown Support
-
-The `Markdown` package for `Sublime Text` will be loaded in the last step. Let's take care of the configuration for the viewer `Marked 2` at this point.
-
-Download custom `css` themes directory with
-
-`curl -o md_css_themes https://raw.githubusercontent.com/jamesamiller/macOS-Sierra-Setup/master/md_css_themes`
-
-and then load these into `Marked 2` via the `Preferences -> Style` panel. 
 
 ## Create Symbolic Links
 
