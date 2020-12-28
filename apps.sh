@@ -8,7 +8,7 @@
 
 brew install git
 brew install pandoc
-brew install wget
+#brew install wget
 brew install markdown
 
 ############### Cask ################
