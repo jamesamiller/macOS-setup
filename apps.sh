@@ -16,10 +16,11 @@ brew install markdown
 # Core casks
 brew install --cask alfred
 brew install --cask iterm2
-brew install --cask xquartz
+#brew install --cask xquartz
 
 # Development tool casks
 brew install --cask sublime-text
+brew install --cask visual-studio-code
 brew install --cask github
 brew install --cask tower
 
@@ -39,6 +40,8 @@ brew install --cask keka
 brew install --cask texmaker
 brew install --cask zoom
 brew install --cask keybase
+brew install --cask private-internet-access
+brew install --cask graphsketcher
 
 # Remove outdated versions from the cellar.
 brew cleanup
