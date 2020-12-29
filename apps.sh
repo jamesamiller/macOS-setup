@@ -10,6 +10,9 @@ brew install git
 brew install pandoc
 #brew install wget
 brew install markdown
+# There will be instructions to access this version in the
+# PATH. This is taken care of already in the dotfiles.
+brew install ruby
 
 ############### Cask ################
 
