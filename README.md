@@ -141,6 +141,8 @@ Clone my remote `.dotfiles` repository
 
 to `~/GitHub/dotfiles` and run `symlinks.sh` to construct symbolic links from the home directory to the local repository.
 
+**Note:** An existing `.bash_profile` should be deleted before generating the sym link.
+
 ## Specific macOS Preferences
 
 I don't have many for the time being, and these can be done manually.
