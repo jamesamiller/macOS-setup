@@ -11,7 +11,7 @@ BREW_PREFIX=$(brew --prefix)
 # Install GNU core utilities (those that come with macOS are outdated).
 # Note: To reference these utilities without the 'g' prefix, add
 # $(brew --prefix coreutils)/libexec/gnubin in PATH before /usr/bin (which contains
-# the default macOS tools). This is taken care of in my .bash_profile.
+# the default macOS tools). This is taken care of in my .bash_profile through the .path file.
 brew install coreutils
 sudo ln -s "${BREW_PREFIX}/bin/gsha256sum" "${BREW_PREFIX}/bin/sha256sum"
 
