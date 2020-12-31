@@ -10,24 +10,16 @@ brew install git
 brew install pandoc
 #brew install wget
 brew install markdown
-# There will be instructions to access this version in the
-# PATH. This is taken care of already in the dotfiles.
-brew install ruby
 
 ############### Cask ################
 
-# Core casks
 brew install --cask alfred
 brew install --cask iterm2
 #brew install --cask xquartz
-
-# Development tool casks
 brew install --cask sublime-text
 brew install --cask visual-studio-code
 brew install --cask github
 brew install --cask tower
-
-# Misc casks
 brew install --cask google-chrome
 brew install --cask firefox
 brew install --cask epic
