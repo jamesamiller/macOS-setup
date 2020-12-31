@@ -109,15 +109,12 @@ and as before review it and make any last-minute changes. Change permissions to 
 
 ## Misc Applications
 
-- Office 2016 for Mac
+- Office for Mac
 - Mathematica
 - Matlab
 - Julia and Pluto ([instructions here](https://computationalthinking.mit.edu/Fall20/installation/))
 - MacTeX
-- Adobe Creative Cloud apps, such as
-	- Acrobat DC
-	- Lightroom
-	- Photoshop
+- Adobe Creative Cloud apps, as needed
 - ScanSnap Tools
 - Epson Tools
 
@@ -145,7 +142,7 @@ to `~/GitHub/dotfiles` and run `symlinks.sh` to construct symbolic links from th
 
 ## Specific macOS Preferences
 
-I don't have many for the time being, and these can be done manually.
+I don't have many for the time being, and these can be done manually. Other options are in the `macos.sh` file in my dotfiles repository.
 
 ```bash
 # Show the ~/Library folder
@@ -201,6 +198,10 @@ mkdir tex
 cd tex
 ln -s ~/Dropbox/Library/texmf/tex/latex
 ```
+
+## VS Code
+
+Establish preference syncing with GitHub. Set [Julia executable path](https://techytok.com/julia-vscode/).
 
 ## Sublime Text
 
