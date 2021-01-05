@@ -4,6 +4,7 @@
 # Execute from ~.
 
 ln -s ~/Dropbox/Calculations
+ln -s ~/Dropbox/Current\ Research
 ln -s ~/Dropbox/Lightroom
 ln -s ~/Dropbox/Papers
 ln -s ~/Dropbox/Personal
