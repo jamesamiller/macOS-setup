@@ -1,18 +1,15 @@
 # MacOS Setup
 
-These instructions are for configuring a new install of macOS, based on my research, teaching, and personal needs. You can clone or fork this repository and modify the accompanying scripts to suit yourself. 
+These instructions are for semi-manually configuring a new install of macOS, based on my needs. You can clone or fork this repository and modify the accompanying scripts to suit yourself. These instructions work for macOS Big Sur. 
 
 ### References and Additional Resources
 
 - [Collection of Terminal commands](https://github.com/herrbischoff/awesome-macos-command-line)
 - [Another macOS setup](https://gist.github.com/kevinelliott/7152e00d6567e223902a4775b5a0a0be)
-- [Mathias Bynens' dotfiles](https://github.com/mathiasbynens/dotfiles)
 
 # First Steps
 
-1. Have available
-    - iCloud username and password
-    - App Store username and password (if different)
+1. Sign into iCloud and App Store (passwords can be different)
 2. See if there is a macOS update
 3. Through the System Preferences panel, set 
     - Mouse behavior (e.g., tracking speed, scrolling)
@@ -21,9 +18,8 @@ These instructions are for configuring a new install of macOS, based on my resea
     - Finder preferences and layout
     - Firewall
     - Hostname
-    - In Spotlight, deselect "Spotlight Suggestions" and "Allow Spotlight Suggestions in Lookup"
+    - In Spotlight, deselect "Siri Suggestions" and anything else not to be accessed
 4. [Restart in recovery mode](https://support.apple.com/en-us/HT201314) and [set firmware password](https://support.apple.com/en-us/HT204455).
-5. Sign in to iCloud and sync (including Photos).
 
 # Software Installation
 
@@ -86,18 +82,19 @@ Retrieve the script `apps.sh`
 
 and edit for any additions or deletions. Make the script executable as above and run it.
 
-### Sign-ins and Cloud Storage
+### Sign-ins
 
 Sign into
+- other email accounts
 - 1Password
 - Chrome, Firefox
 - Dropbox (and sync)
 - Evernote (and sync)
 - Google Drive Filestream (and sync)
-- Adobe Creative Cloud
+- Adobe Creative Cloud (can load specific apps also)
 - Zoom
 
-## Mac App Store (XXX working...)
+## Mac App Store
 
 These applications are installed with the bash script `mas.sh`.
 
@@ -112,11 +109,10 @@ and as before review it and make any last-minute changes. Change permissions to 
 - Office for Mac
 - Mathematica
 - Matlab
-- Julia and Pluto ([instructions here](https://computationalthinking.mit.edu/Fall20/installation/))
+- [Julia and Pluto](https://computationalthinking.mit.edu/Fall20/installation/)
 - MacTeX
-- Adobe Creative Cloud apps, as needed
 - ScanSnap Tools
-- Epson Tools
+- Printer Tools
 
 # More Configuration
 
@@ -142,7 +138,7 @@ to `~/GitHub/dotfiles` and run `symlinks.sh` to construct symbolic links from th
 
 ## Specific macOS Preferences
 
-I don't have many for the time being, and these can be done manually. Other options are in the `macos.sh` file in my dotfiles repository.
+I don't have many for the time being, and these can be done manually. 
 
 ```bash
 # Show the ~/Library folder
@@ -166,25 +162,23 @@ defaults write com.apple.mail DisableInlineAttachmentViewing -bool true
 
 ## MacTeX
 
-After the MacTeX install, we need to install extra fonts and set up access to my sty files.
+There are some addition steps to configure MacTeX the way I need.
 
-### Fonts
+### MathTime Pro 2 Fonts
 
-**Note:** Must update
+Add the [MathTime Professional 2 fonts](https://www.pctex.com/kb/74.html):
+- Go to where these are stored (e.g., Dropbox)
+- Copy all the folders in `mtp2fonts/texmf` to `/usr/local/texlive/texmf-local`. This will overwrite what is already there.
+- Run the command `sudo texhash`
+- Run the command `sudo updmap-sys --enable Map=mtpro2.map`
 
-I need to add the [MathTime Professional 2 fonts](http://www.pctex.com/mtpro2.html). General instructions can be found [here](http://cims.nyu.edu/~fennell/mtpro2/). For my set up, the fonts are installed as follows.
+### mtpro2.sty Fix
 
-Change directory 
+There is an [annoying issue](https://tex.stackexchange.com/questions/374353/no-room-for-a-new-count) with the fonts. This error will appear upon using the fonts for the first time.
 
-`cd /Users/miller/Dropbox/Software/TeX/MathTime\ Pro\ Fonts/mtpro2-texlive`
-
-and make the installer script user executable (if it isn't already)
-
-`chmod u+x ./mtpro2-texlive.sh`
-
-Then run the script, including the path to the font files
-
-`./mtpro2-texlive.sh -i ../mtp2fonts/mtp2fonts.zip.tpm`
+To fix:
+- Click on the `mtpro2.sty` link that appears in the error on MacTeX
+- Replace the offending line with `\newcount\pointcount@`
 
 ### Style Files
 
@@ -205,21 +199,7 @@ Establish preference syncing with GitHub. Set [Julia executable path](https://te
 
 ## Sublime Text
 
-### Package Control
-
-Instructions on setting up Package Control with Sublime Text are found [here](https://packagecontrol.io/installation#st3). (Heeding their warning, I'm not reproducing the code but rather linking to theirs.)
-
-### Sync Packages
-
-I [sync packages with Dropbox](https://packagecontrol.io/docs/syncing). I just need to create a sym link to those with
-
-```bash
-cd ~/Library/Application\ Support/Sublime\ Text\ 3/Packages/
-rm -r User
-ln -s ~/Dropbox/Sublime/User
-```
-
-Now any package additions or changes will be synced across all my machines. 
+Setup and syncing follow the instructions in [this gist](https://gist.github.com/jamesamiller/f58db18ca7fb8dd04188a755e46fe129).
 
 ## Create Symbolic Links
 
