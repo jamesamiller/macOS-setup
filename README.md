@@ -1,6 +1,6 @@
 # MacOS Setup
 
-These instructions are for semi-manually configuring a new install of macOS, based on my needs. You can clone or fork this repository and modify the accompanying scripts to suit yourself. These instructions work for macOS Big Sur. 
+Semi-manually configure a new install of macOS. You can clone or fork this repository and modify to suit yourself. Works for macOS Big Sur. 
 
 ### References and Additional Resources
 
@@ -30,7 +30,7 @@ We need these first:
 - [Homebrew](https://brew.sh/)
 - [mas](https://github.com/mas-cli/mas)
 
-These three items are handled by the script `prereq.sh`. Retrieve it in the Terminal with
+These items are handled by the script `prereq.sh`. Retrieve it in the Terminal with
 
 `curl -o prereq.sh https://raw.githubusercontent.com/jamesamiller/macOS-setup/master/prereq.sh`
 
@@ -136,7 +136,7 @@ to `~/GitHub/dotfiles` and run `symlinks.sh` to construct symbolic links from th
 
 **Note:** An existing `.bash_profile` should be deleted before generating the sym link.
 
-## Specific macOS Preferences
+## More macOS Preferences
 
 I don't have many for the time being, and these can be done manually. 
 
