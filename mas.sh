@@ -18,10 +18,5 @@ mas install 409183694
 mas install 409203825
 # Pages
 mas install 409201541
-# Geogebra 5
-#mas install 845142834 # This did not work
-# Xcode (install later and separately if needed)
-#mas install 497799835
-
-# Just to be sure...
-mas upgrade
+# Geogebra Classic 6
+mas install 1182481622
