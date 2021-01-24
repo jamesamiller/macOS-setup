@@ -28,7 +28,6 @@ brew install --cask dropbox
 brew install --cask evernote
 brew install --cask 1password
 brew install --cask viscosity
-brew install --cask google-earth
 brew install --cask google-drive-file-stream
 brew install --cask adobe-creative-cloud
 brew install --cask keka
