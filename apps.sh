@@ -27,14 +27,14 @@ brew install --cask tor-browser
 brew install --cask dropbox
 brew install --cask evernote
 brew install --cask 1password
-brew install --cask viscosity
+#brew install --cask viscosity  #use protonVPN app now
 brew install --cask google-drive-file-stream
 brew install --cask adobe-creative-cloud
 brew install --cask keka
 brew install --cask texmaker
 brew install --cask zoom
-brew install --cask keybase
-brew install --cask private-internet-access
+#brew install --cask keybase
+#brew install --cask private-internet-access
 brew install --cask graphsketcher
 
 # Remove outdated versions from the cellar.

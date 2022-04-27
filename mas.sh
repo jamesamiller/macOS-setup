@@ -10,8 +10,6 @@ mas install 890031187
 mas install 623795237
 # Markdown Pro
 mas install 465965038
-# OmniGraphSketcher
-mas install 404651688
 # Keynote
 mas install 409183694
 # Numbers
